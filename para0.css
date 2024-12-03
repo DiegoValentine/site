@@ -1,3 +1,4 @@
+/* Resetando alguns estilos padrões */
 * {
     margin: 0;
     padding: 0;
@@ -46,7 +47,7 @@ body {
 .container {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap; /* Adicionando wrap para telas menores */
+    flex-wrap: wrap; /* Wrap para telas menores */
     padding: 20px;
     gap: 20px;
 }
@@ -119,18 +120,29 @@ body {
 
 /* Responsividade para dispositivos menores */
 
-/* Para telas grandes (desktops) */
+/* Para telas muito grandes (desktops grandes) */
+@media (max-width: 1600px) {
+    .main-content {
+        gap: 20px;
+    }
+
+    .video {
+        width: calc(33.33% - 10px); /* 3 vídeos por linha */
+    }
+}
+
+/* Para telas grandes (desktops e laptops) */
 @media (max-width: 1200px) {
     .main-content {
         gap: 20px;
     }
 
     .video {
-        width: calc(33.33% - 10px); /* 3 vídeos por linha em telas grandes */
+        width: calc(33.33% - 10px); /* 3 vídeos por linha */
     }
 }
 
-/* Para tablets (telas médias) */
+/* Para telas médias (tablets) */
 @media (max-width: 1024px) {
     .header .search input {
         width: 250px; /* Reduzindo a largura da barra de busca em tablets */
