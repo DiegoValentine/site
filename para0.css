@@ -1,62 +1,64 @@
-/* Reset básico */
+/* Resetando alguns estilos padrões */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Corpo e layout principal */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #f8f8f8;
+    color: #333;
 }
 
-/* Estilos do Header */
+/* Barra de Navegação */
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #fff;
-    border-bottom: 1px solid #ccc;
+    background-color: #ff0000;
+    color: white;
 }
 
 .header .logo {
     font-size: 24px;
     font-weight: bold;
-    color: #ff0000;
 }
 
 .header .search input {
     padding: 8px;
-    width: 200px;
-    border-radius: 20px;
-    border: 1px solid #ccc;
+    font-size: 16px;
+    border-radius: 4px;
+    border: none;
+    width: 300px;
 }
 
 .header .menu button {
-    padding: 8px 20px;
-    background-color: #ff0000;
+    padding: 10px 15px;
+    background-color: #007aff;
     color: white;
     border: none;
-    border-radius: 20px;
+    border-radius: 4px;
     cursor: pointer;
 }
 
-/* Layout principal com Flexbox */
+/* Corpo da Página */
 .container {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
+    flex-wrap: wrap; /* Adicionando wrap para telas menores */
     padding: 20px;
+    gap: 20px;
 }
 
 /* Barra Lateral */
 .sidebar {
-    width: 220px;
+    flex: 1;
     background-color: #fff;
     padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .sidebar ul {
@@ -64,35 +66,45 @@ body {
 }
 
 .sidebar ul li {
-    padding: 10px 0;
-    font-size: 16px;
+    padding: 12px 0;
+    font-size: 18px;
+    cursor: pointer;
 }
 
-/* Conteúdo principal */
+/* Conteúdo Principal */
 .main-content {
-    flex: 1;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    flex: 3;
+    display: flex;
+    flex-wrap: wrap;
     gap: 20px;
-    padding: 0 20px;
 }
 
-.video img, .video video {
+.video {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    width: calc(33.33% - 10px); /* Ajustando para 3 colunas em desktops */
+}
+
+.video img {
     width: 100%;
-    border-radius: 10px;
+    height: auto;
 }
 
 .video h3 {
-    font-size: 18px;
-    margin-top: 10px;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+    background-color: #fafafa;
 }
 
-/* Barra lateral de sugestões */
+/* Barra Lateral de Sugestões */
 .suggestions {
-    width: 300px;
+    flex: 1;
     background-color: #fff;
     padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .suggestions h3 {
@@ -103,36 +115,26 @@ body {
 .suggestion-item {
     padding: 10px 0;
     font-size: 16px;
+    cursor: pointer;
 }
 
-/* Media Queries para dispositivos móveis */
+/* Responsividade para dispositivos menores */
+
+/* Para telas grandes (desktops) */
+@media (max-width: 1200px) {
+    .main-content {
+        gap: 20px;
+    }
+
+    .video {
+        width: calc(33.33% - 10px); /* 3 vídeos por linha em telas grandes */
+    }
+}
+
+/* Para tablets (telas médias) */
 @media (max-width: 1024px) {
     .header .search input {
-        width: 150px;
-    }
-
-    .main-content {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .sidebar {
-        width: 180px;
-    }
-
-    .suggestions {
-        width: 250px;
-    }
-}
-
-@media (max-width: 768px) {
-    .header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .header .search input {
-        width: 100%;
-        margin-top: 10px;
+        width: 250px; /* Reduzindo a largura da barra de busca em tablets */
     }
 
     .container {
@@ -140,39 +142,72 @@ body {
         align-items: center;
     }
 
-    .sidebar, .suggestions {
+    .sidebar {
         width: 100%;
-        margin-top: 20px;
+        margin-bottom: 20px;
     }
 
     .main-content {
-        grid-template-columns: 1fr;
+        width: 100%;
+        flex-wrap: nowrap;
+    }
+
+    .video {
+        width: 48%; /* Ajustando para 2 colunas em tablets */
+    }
+
+    .suggestions {
+        width: 100%;
+        margin-top: 20px;
     }
 }
 
-@media (max-width: 480px) {
-    .header .logo {
-        font-size: 20px;
+/* Para telas pequenas (smartphones) */
+@media (max-width: 768px) {
+    .header .search input {
+        width: 200px;
     }
 
-    .header .search input {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sidebar {
         width: 100%;
-        padding: 10px;
+        margin-bottom: 20px;
+    }
+
+    .main-content {
+        width: 100%;
+        flex-wrap: nowrap;
+    }
+
+    .video {
+        width: 100%; /* Um vídeo por linha em telas menores */
+    }
+
+    .suggestions {
+        width: 100%;
+        margin-top: 20px;
+    }
+}
+
+/* Para telas muito pequenas (smartphones em modo retrato) */
+@media (max-width: 480px) {
+    .header .search input {
+        width: 150px;
     }
 
     .video h3 {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .suggestions h3 {
         font-size: 18px;
     }
 
-    .sidebar, .suggestions {
-        padding: 15px;
-    }
-
-    .main-content {
-        padding: 0 10px;
+    .suggestion-item {
+        font-size: 14px;
     }
 }
