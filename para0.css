@@ -1,3 +1,4 @@
+/* Reset e Normalização */
 * {
     margin: 0;
     padding: 0;
@@ -10,6 +11,7 @@ body {
     color: #333;
 }
 
+/* Header */
 .header {
     display: flex;
     justify-content: space-between;
@@ -41,14 +43,16 @@ body {
     cursor: pointer;
 }
 
+/* Container Principal */
 .container {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
     padding: 20px;
     gap: 20px;
 }
 
+/* Sidebar */
 .sidebar {
     flex: 1;
     background-color: #fff;
@@ -67,6 +71,7 @@ body {
     cursor: pointer;
 }
 
+/* Main Content */
 .main-content {
     flex: 3;
     display: flex;
@@ -81,7 +86,8 @@ body {
     width: calc(33.33% - 10px); 
 }
 
-.video img {
+.video img,
+.video video {
     width: 100%;
     height: auto;
 }
@@ -93,6 +99,7 @@ body {
     background-color: #fafafa;
 }
 
+/* Sugestões */
 .suggestions {
     flex: 1;
     background-color: #fff;
@@ -112,6 +119,7 @@ body {
     cursor: pointer;
 }
 
+/* Responsividade */
 @media (max-width: 1600px) {
     .main-content {
         gap: 20px;
@@ -208,4 +216,11 @@ body {
     .suggestion-item {
         font-size: 14px;
     }
+}
+
+footer {
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    text-align: center;
 }
